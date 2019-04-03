@@ -46,16 +46,20 @@ const Styles = StyleSheet.create({
     chat:{
 
         width:'100%',
-        height:'85%',
+        height:'90%',
         backgroundColor:'#000000',
-        borderColor:'#000000'
+        borderColor:'#000000',
+        margin:0,
+        padding:0
 
     },
     chatInput:{
         width:'100%',
-        height:'20%',
+        height:'10%',
         backgroundColor:'#000000',
         borderColor:'#000000',
+        padding:0,
+        margin:0
 
 
     }

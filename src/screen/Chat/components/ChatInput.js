@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import { Formik } from  'formik';
 import { View,Text } from 'native-base';
 import {StyleSheet, TextInput,Platform } from 'react-native';
-import { RectButton } from 'react-native-gesture-handler';
+import { RectButton,BorderlessButton } from 'react-native-gesture-handler';
 import Icon  from 'react-native-vector-icons/Ionicons';
 import * as Yup from 'yup';
 import {Card,CardItem,Right } from 'native-base';
@@ -33,12 +33,12 @@ message:Yup.string().required()
                  />
 
                 <Right>
-                <RectButton  style={Styles.send} onPress={props.handleSubmit} >
+                <BorderlessButton  style={Styles.send} onPress={props.handleSubmit} >
                    <Icon  
                    color='green'
                    size={30}
                    name={Platform.select({android:'md-send',ios:'ios-send'})} />
-                </RectButton>
+                </BorderlessButton>
                 </Right>
                </CardItem>
              )
@@ -56,19 +56,25 @@ const Styles = StyleSheet.create({
     chatInput:{
         flex:1,
         flexDirection:'row',
-        justifyContent:'space-between',
+        justifyContent:'flex-start',
         alignItems:'center',
         backgroundColor:'#333333',
         borderRadius:40,
-        margin:10,
+        marginLeft:10,
+        marginRight:10,
+        marginTop:0,
+        marginBottom:3,
+        padding:0,
     },
     input:{
-        width:'70%',
-        color:'white'
+        width:'85%',
+        color:'white',
+        padding:0,
+        margin:0
 
     },
     send:{
-        width:'30%'
+
     }
 
 });

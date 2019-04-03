@@ -12,7 +12,7 @@ export default class Chat extends Component {
 
 layoutProvider = new LayoutProvider(
     index => 'normal',
-    (type,dim)=>{dim.width=width;dim.height=100}
+    (type,dim)=>{dim.width=width;dim.height=height*0.1}
 );
 
     initListData = () =>{
@@ -58,6 +58,7 @@ const Styles = StyleSheet.create({
     Item:{
         flexDirection:'row',
         backgroundColor:'#000000',
-        margin:5
+        margin:0,
+        padding:0
     }
 });

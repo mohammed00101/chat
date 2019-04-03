@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { CardItem,Right,Text } from 'native-base';
+import { CardItem,Left,Text } from 'native-base';
 import { StyleSheet } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import avatar from '../../../assets/avatar.jpg';
@@ -10,12 +10,12 @@ export default class ChatItem extends Component {
 
         return (
                 <CardItem  style={this.props.style}>
-                    <Text style={Styles.content}>{this.props.data.item.message}</Text>
-                    <Right>
-                        <FastImage
+                    <FastImage
+                        style={Styles.image}
                         source={avatar}
-                        />
-                    </Right>
+                    />
+                    <Text style={Styles.content}>{this.props.data.item.message}</Text>
+
                 </CardItem>
         );
     }
@@ -25,16 +25,20 @@ export default class ChatItem extends Component {
 const Styles = StyleSheet.create({
     content:{
         backgroundColor:'#333333',
+        // multiLine:true,
+        maxWidth:'70%',
         borderRadius:15,
         padding:6,
         color:'white',
+        margin:0,
 
 
     },
     image:{
-        width:100,
-        height:100,
-        borderRadius:10,
+        margin:6,
+        width:30,
+        height:30,
+        borderRadius:15,
         backgroundColor:'white',
     }
 
