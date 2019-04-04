@@ -1,12 +1,17 @@
-import {createStore} from 'redux';
+import {createStore, applyMiddleware,compose } from 'redux';
 import reducers,{persistorReducer} from './reducers';
 import { persistStore } from 'redux-persist';
+import  Thunk  from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 
+
+// if(__DEV__)
+// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose ;
 
 export default  Store = createStore(
     persistorReducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    composeWithDevTools(applyMiddleware(Thunk))
 );
 
 export const persistor = persistStore(Store);

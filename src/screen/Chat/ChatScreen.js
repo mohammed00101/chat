@@ -5,21 +5,34 @@ import Chat from './components/Chat';
 import {Container, Content, Card,View} from 'native-base';
 import messages from '../../data/messages';
 import {  GiftedChat }  from 'react-native-gifted-chat';
-import { onSendMessages } from '../../store/actions';
+import { onSendMessages, onFetchMessages } from '../../store/actions';
 import {connect } from 'react-redux';
 
 
 
 class  ChatScreen  extends  Component{
 
+    componentWillMount = () => {
+        
+        const dsclient = this.props.dsclient;
+        this.props.onFetchMessages(dsclient);
+      
+    }
 
+    onSendMessages = (message) => {
+
+        const dsclient = this.props.dsclient;
+        this.props.onSendMessages(message,dsclient);
+    }
 
     render = () => {
+
+
         return(
             <View style={Styles.chat}>
             <GiftedChat
                 messages={this.props.messages}
-                onSend={this.props.onSendMessages}
+                onSend={this.onSendMessages}
                 user={{
                     _id:1
                 }}
@@ -41,7 +54,8 @@ const Styles = StyleSheet.create({
 
 
 const mapDispatchToProps = (dispatch) => ({
-    onSendMessages:(messages = []) => dispatch(onSendMessages(messages)),
+    onSendMessages:(messages = [],dsclient) => dispatch(onSendMessages(messages,dsclient)),
+    onFetchMessages:(dsclient) => dispatch(onFetchMessages(dsclient)),
 });
 
 const mapStateToProps = ({chat:{messages}}) => (

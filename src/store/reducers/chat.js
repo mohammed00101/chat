@@ -15,8 +15,8 @@ export default (state=INITIAL_STATE,{type,payload}) => {
             ...state,
             messages:GiftedChat.append(state.messages,payload.messages)
         };
-        case RECEIVE_MESSAGES:
-        return {...state,messages:payload.messages};
+        // case RECEIVE_MESSAGES:
+        // // return {...state,messages:payload.messages};
         default:
         return state;
 

@@ -5,13 +5,22 @@ import Home from './src/screen/Home';
 import { Provider } from 'react-redux';
 import Store,{persistor} from './src/store/configureStore';
 import { PersistGate } from 'redux-persist/integration/react';
-const app = () => (
+import deepstream from './src/services/deepstream';
+
+
+const app = () => {
+
+const client =   deepstream();
+
+return (
 
     <Provider store={ Store } >
     <PersistGate loading={null} persistor={persistor} >
-    <Home/>
+    <Home  deepstremClient={client} />
     </PersistGate>
     </Provider>
-);
+)
+
+};
 
 AppRegistry.registerComponent(appName, () => app);
