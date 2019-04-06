@@ -13,7 +13,9 @@ export  const   onSendMessages = ( messages, dsclient ) => async dispatch=> {
 
     record.whenReady((record)=>{
         // insert data to record
-        record.set(messages[0]);
+        messages[0].sent=true;
+
+        record.set(messages);
 
         //insert record to list
         chat.addEntry(`chatRoom/1_2/${messages[0]._id})`);
@@ -34,21 +36,23 @@ export  const   onFetchMessages = (dsclient)=> async dispatch => {
     const chat = dsclient.record.getList(`chatRoom/1_2`);
 
     chat.subscribe((entries = []) => {
-        console.log('entries',entries);
 
-        const messages =  entries.map((record) => {
+      entries.forEach( (recordName)  => {
+            const record = dsclient.record.getRecord(recordName);
 
-           return  dsclient.record.getRecord(record).whenReady(record=>record.get());
+            record.whenReady((record)=>{
+
+                messages = record.get();
+
+                dispatch({
+                    type:RECEIVE_MESSAGES,
+                    payload:{messages}
+                });
+
+
+            })
         });
-
-        console.log('messages',messages);
-
-        dispatch({
-            type:RECEIVE_MESSAGES,
-            payload:{messages}
-        });
-
-    }); 
+    });
 
 }
 

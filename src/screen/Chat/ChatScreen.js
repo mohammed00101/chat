@@ -12,11 +12,11 @@ import {connect } from 'react-redux';
 
 class  ChatScreen  extends  Component{
 
-    componentWillMount = () => {
-        
+    componentDidMount = () => {
+
         const dsclient = this.props.dsclient;
         this.props.onFetchMessages(dsclient);
-      
+
     }
 
     onSendMessages = (message) => {
@@ -39,6 +39,12 @@ class  ChatScreen  extends  Component{
             />
             </View>
         );
+    }
+
+
+    componentWillUnmount = () => {
+
+        this.props.dsclient.close();
     }
 
 }

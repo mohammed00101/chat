@@ -1,17 +1,20 @@
 import creatdeepstream from 'deepstream.io-client-js';
 
-const url = '10.1.10.148:6020';
+const url = '192.168.44.106:6020';
 
 export default () => {
 
+        const ds = creatdeepstream(url);
 
-    const ds = creatdeepstream(url);
-    
-    ds.on('connectionStateChanged',(connectionState) =>{
+        ds.on('connectionStateChanged',(connectionState) =>{
+            console.log('connection State',connectionState);
+        });
 
-        console.log('connectionState',connectionState);
-    })
+        ds.on('error',(error)=>{
+            console.log('connection error',error);
 
-   return ds;
+        });
+
+        return ds;
 
 };

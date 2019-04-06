@@ -11,6 +11,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 export default  Store = createStore(
     persistorReducer,
+    // reducers,
     composeWithDevTools(applyMiddleware(Thunk))
 );
 

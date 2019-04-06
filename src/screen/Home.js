@@ -8,28 +8,30 @@ export default class HomeScreen  extends  Component{
 
     componentWillMount =  () => {
 
-     this.client = this.props.deepstremClient.login({
-            type:'file',
-            name:'mohamed',
-            password:'password'
-        },(success,data) => {
+    //  this.client = this.props.deepstremClient.login({
+    //         type:'file',
+    //         name:'mohamed',
+    //         password:'password'
+    //     },(success,data) => {
 
-            console.log(success,data);
-        });
+    //         console.log(success,data);
+    //     });
 
     }
 
     render(){
         return (
-               
-                <ChatScreen  dsclient={this.client}  />
+            <View>
+                <Text>home</Text>
+            </View>
+                // <ChatScreen  dsclient={this.client}  />
 
         );
 
     }
 
     componentWillUnmount = () => {
-        this.props.deepstremClient.close();
+        // this.props.deepstremClient.close();
     }
 
 }
