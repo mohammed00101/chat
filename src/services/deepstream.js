@@ -1,6 +1,6 @@
 import creatdeepstream from 'deepstream.io-client-js';
 
-const url = '192.168.44.106:6020';
+const url = '10.1.10.148:6020';
 
 export default () => {
 

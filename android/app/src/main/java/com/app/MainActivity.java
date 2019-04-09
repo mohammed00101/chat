@@ -1,21 +1,18 @@
 package com.app;
 
-import com.facebook.react.ReactActivity;
-import com.facebook.react.ReactActivityDelegate;
-import com.facebook.react.ReactRootView;
-import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;
+import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
+import android.widget.LinearLayout;
 
 import com.reactnativenavigation.NavigationActivity;
 
 public class MainActivity extends NavigationActivity {
+  @Override
+  public void addDefaultSplashLayout() {
+      LinearLayout splash = new LinearLayout(this);
+      Drawable splash_screen_bitmap = ContextCompat.getDrawable(getApplicationContext(),R.drawable.splash);
+      splash.setBackground(splash_screen_bitmap);
 
-  //     @Override
-  //   protected ReactActivityDelegate createReactActivityDelegate() {
-  //   return new ReactActivityDelegate(this, getMainComponentName()) {
-  //     @Override
-  //     protected ReactRootView createRootView() {
-  //      return new RNGestureHandlerEnabledRootView(MainActivity.this);
-  //     }
-  //   };
-  // }
+      setContentView(splash);
+  }
 }

@@ -3,6 +3,7 @@ package com.app;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.imagepicker.ImagePickerPackage;
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 import com.oblador.vectoricons.VectorIconsPackage;
@@ -48,6 +49,7 @@ public class MainApplication extends NavigationApplication {
            // eg. new VectorIconsPackage()
 
             new MainReactPackage(),
+            new SplashScreenReactPackage(),
             new ImagePickerPackage(),
             new AsyncStoragePackage(),
             new VectorIconsPackage(),

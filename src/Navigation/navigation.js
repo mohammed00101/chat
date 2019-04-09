@@ -2,7 +2,7 @@ import {Navigation} from 'react-native-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 import AsyncStorage from '@react-native-community/async-storage';
 import {  USER_KEY} from  '../utils/config';
-// import deepstreamConnection from '../services/deepstream';
+import deepstreamConnection from '../services/deepstream';
 
 
 // navigation to  app authentication
@@ -58,15 +58,15 @@ export default () => Navigation.events().registerAppLaunchedListener(async ()=>{
 
     try{
 
-        // //connect with deepstream
-        //  const ds = await deepstreamConnection();
+        //connect with deepstream
+         const ds = await deepstreamConnection();
 
          const user =  await AsyncStorage.getItem(USER_KEY);
 
          // authenticated
          if(user){
             console.log('auth');
-            goApp();
+            goAuth();
 
          }
          //no authentication
